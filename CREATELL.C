@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+typedef struct nodetype
+{
+int info;
+struct nodetype *next;
+}node;
+node* create(int);
+void display(node*);
+void main()
+{
+node *start;
+int n;
+clrscr();
+start=NULL;
+printf("\nEnter no. of nodes: ");
+scanf("%d",&n);
+start=create(n);
+display(start);
+}
+node* create(int n)
+{
+node *head,*p;
+int i;
+head=(node*)malloc(sizeof(node));
+head->next=NULL;
+scanf("%d",&(head->info));
+p=head;
+for(i=1;i<n;i++)
+{
+p->next=(node*)malloc(sizeof(node));
+p=p->next;
+scanf("%d",&(p->info));
+p->next=NULL;
+}
+return(head);
+}
+void display(node *p)
+{
+while(p!=NULL)
+{
+printf("\n Nodes are : %d",p->info);
+p=p->next;
+}
+getch();
+}
+

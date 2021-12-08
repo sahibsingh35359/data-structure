@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
+    int data;
+    struct node *link;
+};
+
+void search(struct node *head, int item)
+{
+    struct node *ptr = head;
+    int con = 1;
+    while(ptr != NULL)
+    {
+        if (ptr->data == item)
+        {
+            printf("\nPosition : %d", con);
+            break;
+        }
+        ptr = ptr->link;
+        con++;
+    }
+}
+
+void display(struct node *ptr)
+{
+    while (ptr != NULL)
+    {
+        printf("%d\n", ptr->data);
+        ptr = ptr->link;
+    }
+}
+
+int main()
+{
+    struct node *head, *current, *current1;
+
+    head = (struct node *)malloc(sizeof(struct node));
+
+    head->data = 45;
+    head->link = NULL;
+
+    current = (struct node *)malloc(sizeof(struct node));
+    current->data = 23;
+    current->link = NULL;
+
+    current1 = (struct node *)malloc(sizeof(struct node));
+    current1->data = 12;
+    current1->link = NULL;
+
+    head->link = current;
+    current->link = current1;
+
+    display(head);
+    search(head, 23);
+
+    return 0;
+}

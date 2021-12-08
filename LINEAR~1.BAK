@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+    int a[20],i,n,loc,item;
+    clrscr();
+    printf("\nEnter number of elements (<=20)) ");
+    scanf("%d",&n);
+    printf("\nEnter %d elements of an array\n",n);
+    for(i=0;i<n;i++)
+    {
+	scanf("%d",&a[i]);
+    }
+    printf("\nEnter item to be search = " );
+    scanf("%d",&item);
+    loc=NULL;
+    for(i=0;i<n;i++)
+    {
+	if(item==a[i])
+    {
+    loc=i+1;
+    break;
+    }
+    }
+    if(loc==NULL)
+    {
+	printf("\n item %d not found in array", item);
+    }
+    else
+    printf("\n item %d found at %d location",item,loc);
+    getch();
+}

@@ -1,0 +1,93 @@
+#include<stdio.h>
+#include<conio.h>
+#include<alloc.h>
+
+struct node
+{
+int info;
+struct node *next;
+};
+struct node *start=NULL,*save,*prev;
+//int i,number;
+void create();
+void display();
+void delend();
+void main()
+{
+clrscr();
+fflush(stdin);
+create();
+display();
+
+delend();
+display();
+getch();
+}
+void create()
+{
+char ch;
+static int i = 0;
+struct node*nextnode;
+printf("\nInput choice n for break : ");
+ch=getchar();
+while(ch!='n')
+{
+if(i==0)
+{
+start = (struct node *)malloc(sizeof(struct node));
+printf("\nInput node %d: ",i+1);
+scanf("%d",&(start->info));
+start->next=NULL;
+prev=start;
+}
+else
+{
+nextnode=(struct node*)malloc(sizeof(struct node));
+printf("\nInput node %d : ",i+1);
+scanf("%d",&(nextnode->info));
+prev->next=nextnode;
+nextnode->next=NULL;
+prev=nextnode;
+}
+fflush(stdin);
+printf("\nInput choice n for break: ");
+ch=getchar();
+i++;
+}
+if(i!=0)
+printf("\nTotal nodes = %d",i);
+}
+void display()
+{
+struct node*nextnode;
+printf("\n");
+if(start==NULL)
+{
+printf("\n No node is there in the linked list");
+return;
+}
+else
+{
+nextnode=start;
+}
+while(nextnode->next!=NULL)
+{
+printf("%d->",nextnode->info,nextnode);
+nextnode=nextnode->next;
+}
+printf("%d->",nextnode->info,nextnode);
+}
+void delend()
+{
+struct node *n1,*ptr;
+ptr=start;
+printf("\n\nAfter deletion");
+n1=start->next;
+while(n1->next!=NULL)
+{
+ptr=n1;
+n1=n1->next;
+}
+ptr->next=NULL;
+}
+

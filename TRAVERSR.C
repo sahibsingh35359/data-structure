@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+struct node
+{
+  int data;
+  struct node *link;
+};
+struct node *create()
+{
+  struct node *head, *p, *temp;
+  int n,i, data;
+  printf("\nEnter the total no. of node: ");
+  scanf("%d",&n);
+  head = (struct node *)malloc(sizeof(struct node));
+  printf("\nThe value of head node: ");
+  scanf("%d", &data);
+  head->data=data;
+  head->link=NULL;
+  temp = head;
+  for(i = 2;i<=n; i++)
+  {
+     p = (struct node *)malloc(sizeof(struct node));
+     printf("\nEnter node %d : ",i);
+     scanf("%d",&data);
+
+        p->data=data;
+        p->link=NULL;
+        p->link=NULL;
+
+        temp->link= p;
+        temp = temp->link;
+  }
+  p->link = NULL;
+  return(head);
+};
+void traverse(struct node *p)
+{
+    int  i = 1;
+    while(p !=NULL)
+    {
+       printf("\n\tElement no %d: %d\n",i,p->data);
+       p = p->link;
+    }
+}
+void main()
+{
+  struct node*start;
+  clrscr();
+  start = create();
+  traverse(start);
+  getch();
+}
